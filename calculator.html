@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+  /* CSS for calculator layout */
+  .calculator {
+    width: 200px;
+    margin: 50px auto;
+    padding: 52px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #777474;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+
+  .calculator input[type="text"] {
+    grid-column: span 4;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: right;
+  }
+
+  .calculator input[type="button"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .calculator input[type="button"].operator {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .calculator input[type="button"].equal {
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .calculator input[type="button"]:hover {
+    background-color: #0056b3;
+  }
+
+  .calculator input[type="button"].clear {
+    background-color: #dc3545;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" disabled>
+  <input type="button" value="7" onclick="addToDisplay('7')">
+  <input type="button" value="8" onclick="addToDisplay('8')">
+  <input type="button" value="9" onclick="addToDisplay('9')">
+  <input type="button" value="/" class="operator" onclick="addToDisplay('/')">
+  <input type="button" value="4" onclick="addToDisplay('4')">
+  <input type="button" value="5" onclick="addToDisplay('5')">
+  <input type="button" value="6" onclick="addToDisplay('6')">
+  <input type="button" value="*" class="operator" onclick="addToDisplay('*')">
+  <input type="button" value="1" onclick="addToDisplay('1')">
+  <input type="button" value="2" onclick="addToDisplay('2')">
+  <input type="button" value="3" onclick="addToDisplay('3')">
+  <input type="button" value="-" class="operator" onclick="addToDisplay('-')">
+  <input type="button" value="0" onclick="addToDisplay('0')">
+  <input type="button" value="." onclick="addToDisplay('.')">
+  <input type="button" value="=" class="equal" onclick="calculate()">
+  <input type="button" value="+" class="operator" onclick="addToDisplay('+')">
+  <input type="button" value="C" class="clear" onclick="clearDisplay()">
+</div>
+
+<script>
+  function addToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    var result = eval(document.getElementById('display').value);
+    document.getElementById('display').value = result;
+  }
+</script>
+
+</body>
+</html>
